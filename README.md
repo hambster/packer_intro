@@ -148,6 +148,26 @@ Please take following commands for your reference:
       ./packer --help
 ```
 
+### Environment Setup
+
+```bash
+
+# list available subscriptions
+az account list -o table
+
+# set az cli to use correct subscription
+az account set -s <subscription-id>
+
+# check whether the action of set was correct or not
+az account show -o table
+
+# create resource group
+az group create -n <rg-name> -l southeastasia
+
+# create a VNet on Azure
+az network vnet create -g <rg-name> -n hpc-hol-vnet --subnet-prefixes "192.168.100.0/24" -l southeastasia --address-prefixes "192.168.100.0/24" --subnet-name "default"
+```
+
 ### Create Service Principal for Packer to Build Image
 
 We will need `subscription id` and info of `service principal` to build image.
